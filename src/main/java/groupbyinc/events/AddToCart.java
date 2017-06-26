@@ -14,4 +14,8 @@ public class AddToCart extends CartEvent {
     setEventType(EventType.ADD_TO_CART);
   }
 
+  @Override
+  public boolean equals(Object o) {
+    return super.equals(o);
+  }
 }

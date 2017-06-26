@@ -20,4 +20,17 @@ public abstract class CartEvent extends Event {
     return this;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof CartEvent)) {
+      return false;
+    }
+
+    CartEvent cartEvent = (CartEvent) o;
+
+    return getCart() != null ? getCart().equals(cartEvent.getCart()) : cartEvent.getCart() == null;
+  }
 }

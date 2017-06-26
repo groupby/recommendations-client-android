@@ -30,4 +30,23 @@ public class Search extends Event {
     return this;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Search)) {
+      return false;
+    }
+    if (!super.equals(o)) {
+      return false;
+    }
+
+    Search search1 = (Search) o;
+
+    if (getSearch() != null ? !getSearch().equals(search1.getSearch()) : search1.getSearch() != null) {
+      return false;
+    }
+    return getResponseId() != null ? getResponseId().equals(search1.getResponseId()) : search1.getResponseId() == null;
+  }
 }

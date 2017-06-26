@@ -27,4 +27,21 @@ public class Metadata {
     this.value = value;
     return this;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Metadata)) {
+      return false;
+    }
+
+    Metadata metadata = (Metadata) o;
+
+    if (getKey() != null ? !getKey().equals(metadata.getKey()) : metadata.getKey() != null) {
+      return false;
+    }
+    return getValue() != null ? getValue().equals(metadata.getValue()) : metadata.getValue() == null;
+  }
 }

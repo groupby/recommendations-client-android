@@ -67,4 +67,33 @@ public abstract class Event {
     this.clientVersion = clientVersion;
     return this;
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Event)) {
+      return false;
+    }
+
+    Event event = (Event) o;
+
+    if (getEventType() != event.getEventType()) {
+      return false;
+    }
+    if (getId() != null ? !getId().equals(event.getId()) : event.getId() != null) {
+      return false;
+    }
+    if (getVisit() != null ? !getVisit().equals(event.getVisit()) : event.getVisit() != null) {
+      return false;
+    }
+    if (getCustomer() != null ? !getCustomer().equals(event.getCustomer()) : event.getCustomer() != null) {
+      return false;
+    }
+    if (getMetadata() != null ? !getMetadata().equals(event.getMetadata()) : event.getMetadata() != null) {
+      return false;
+    }
+    return getClientVersion() != null ? getClientVersion().equals(event.getClientVersion()) : event.getClientVersion() == null;
+  }
 }

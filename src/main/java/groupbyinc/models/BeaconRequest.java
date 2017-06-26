@@ -7,7 +7,7 @@ import java.net.URL;
 
 public class BeaconRequest {
 
-  private final static String DEFAULT_BEACON_PATH = ".groupbyinc.com/beacon";
+  private final static String DEFAULT_BEACON_PATH = ".groupbycloud.com/beacon";
   private URL requestUrl;
 
   private Event event;

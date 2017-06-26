@@ -47,4 +47,23 @@ public class Cart {
     return this;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Cart)) {
+      return false;
+    }
+
+    Cart cart = (Cart) o;
+
+    if (getItems() != null ? !getItems().equals(cart.getItems()) : cart.getItems() != null) {
+      return false;
+    }
+    if (getId() != null ? !getId().equals(cart.getId()) : cart.getId() != null) {
+      return false;
+    }
+    return getMetadata() != null ? getMetadata().equals(cart.getMetadata()) : cart.getMetadata() == null;
+  }
 }
