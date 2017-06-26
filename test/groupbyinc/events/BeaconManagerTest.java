@@ -26,7 +26,7 @@ public class BeaconManagerTest {
   @Before
   public void setUpRequestAndClient() throws MalformedURLException {
     try {
-      AddToCart event = (AddToCart)(new AddToCart().setId("testId").setCustomer(new Customer("custId", "custArea")));
+      AddToCart event = (AddToCart)(new AddToCart().setId("testId").setCustomer(new Customer("custid", "custarea")));
       beaconRequest = new BeaconRequest(event);
     } catch (TrackerException e) {
       e.printStackTrace();
@@ -35,10 +35,17 @@ public class BeaconManagerTest {
 
   @Test
   public void testSendAddToCart() throws Throwable {
-
+//    PseudoServer server = new PseudoServer(5000);
+//    server.setResource("", new PseudoServlet() {
+//      @Override
+//      public WebResource getResponse(String methodType) throws IOException {
+////        postBodys.add(new String(getBody()));
+//        return new WebResource("{test: 'test'}");
+//      }
+//    });
     String testResponseString = "Test";
 
-    stubWithBodyAndCode(testResponseString, HttpStatus.SC_OK);
+    stubWithBodyAndCode(beaconRequest, testResponseString, HttpStatus.SC_OK);
 
     BeaconManager manager = new BeaconManager("testapikey");
     HttpResponse response = manager.send(beaconRequest);
@@ -47,8 +54,13 @@ public class BeaconManagerTest {
     assertEquals(HttpStatus.SC_OK, response.getStatusLine().getStatusCode());
   }
 
-  private void stubWithBodyAndCode(String testResponseString, int statusCode) {
-    mock.stubFor(post(urlEqualTo("/someAddToCart/URL")).willReturn(aResponse().withHeader("Content-Type", "application/json")
+  private void stubWithBodyAndCode(BeaconRequest beaconRequest, String testResponseString, int statusCode) {
+//    try {
+//      beaconRequest.setRequestUrl(new URL("/beacon"));
+//    } catch (Exception e) {
+//      System.out.println("bad url here");
+//    }
+    mock.stubFor(post(urlEqualTo("custid.groupbyinc.com/beacon")).willReturn(aResponse().withHeader("Content-Type", "application/json")
                                                                        .withStatus(statusCode)
                                                                        .withBody(testResponseString)));
   }

@@ -7,7 +7,7 @@ import java.net.URL;
 
 public class BeaconRequest {
 
-  private final static String DEFAULT_BEACON_PATH = ".groupbyinc.com/";
+  private final static String DEFAULT_BEACON_PATH = ".groupbyinc.com/beacon";
   private URL requestUrl;
 
   private Event event;
@@ -15,8 +15,10 @@ public class BeaconRequest {
   public BeaconRequest(Event e) throws TrackerException {
     System.out.println("test");
     try {
-      this.requestUrl = new URL(e.getCustomer()
-                                    .getId() + DEFAULT_BEACON_PATH);
+      String url = "http://" + e.getCustomer()
+          .getId() + DEFAULT_BEACON_PATH;
+      System.out.println(url);
+      this.requestUrl = new URL(url);
     } catch (MalformedURLException err) {
       throw(new TrackerException("Invalid URL", err));
     }
