@@ -2,11 +2,9 @@ package groupbyinc.events.components;
 
 public class Item {
   private Product product;
-  private String quantity;
+  private int quantity;
 
-  public Item(){}
-
-  public Item(Product product, String quantity) {
+  public Item(Product product, int quantity) {
     this.product = product;
     this.quantity = quantity;
   }
@@ -20,11 +18,11 @@ public class Item {
     return this;
   }
 
-  public String getQuantity() {
+  public int getQuantity() {
     return quantity;
   }
 
-  public Item setQuantity(String quantity) {
+  public Item setQuantity(int quantity) {
     this.quantity = quantity;
     return this;
   }

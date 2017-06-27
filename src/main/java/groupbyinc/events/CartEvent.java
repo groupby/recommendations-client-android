@@ -5,8 +5,6 @@ import groupbyinc.events.components.Cart;
 public abstract class CartEvent extends Event {
   private Cart cart;
 
-  public CartEvent(){}
-
   public CartEvent(Cart cart) {
     this.cart = cart;
   }

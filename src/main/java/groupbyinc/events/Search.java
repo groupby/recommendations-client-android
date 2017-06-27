@@ -10,6 +10,7 @@ public class Search extends Event {
   public Search(Results search, String responseId) {
     this.search = search;
     this.responseId = responseId;
+    setEventType(EventType.SEARCH);
   }
 
   public Results getSearch() {

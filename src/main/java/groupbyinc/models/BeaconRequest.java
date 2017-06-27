@@ -13,12 +13,11 @@ public class BeaconRequest {
   private Event event;
 
   public BeaconRequest(Event e) throws TrackerException {
-    System.out.println("test");
     try {
       String url = "http://" + e.getCustomer()
           .getId() + DEFAULT_BEACON_PATH;
-      System.out.println(url);
       this.requestUrl = new URL(url);
+      this.event = e;
     } catch (MalformedURLException err) {
       throw(new TrackerException("Invalid URL", err));
     }

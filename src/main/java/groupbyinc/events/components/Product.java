@@ -85,12 +85,25 @@ public class Product {
     return this;
   }
 
-  public Product() {
-  }
-
-
   public Product(String sku, String productId) {
     this.sku = sku;
     this.productId = productId;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Product)) {
+      return false;
+    }
+
+    Product product = (Product) o;
+
+    if (getSku() != null ? !getSku().equals(product.getSku()) : product.getSku() != null) {
+      return false;
+    }
+    return getProductId() != null ? getProductId().equals(product.getProductId()) : product.getProductId() == null;
   }
 }

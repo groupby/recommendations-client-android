@@ -7,6 +7,7 @@ public class ViewProduct extends Event{
 
   public ViewProduct(Product product) {
     this.product = product;
+    setEventType(EventType.VIEW_PRODUCT);
   }
 
   public Product getProduct() {

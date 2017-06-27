@@ -19,7 +19,7 @@ public abstract class Event {
     return eventType;
   }
 
-  public void setEventType(EventType eventType) {
+  protected void setEventType(EventType eventType) {
     this.eventType = eventType;
   }
 

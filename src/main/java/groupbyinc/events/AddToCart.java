@@ -1,21 +1,18 @@
 package groupbyinc.events;
 
 import groupbyinc.events.components.Cart;
+import groupbyinc.events.components.Item;
 
 public class AddToCart extends CartEvent {
 
-  public AddToCart() {
-    super();
-    setEventType(EventType.ADD_TO_CART);
+  public AddToCart(Cart cart, Item item) {
+    this(cart);
+    this.getCart().addItem(item);
   }
 
-  public AddToCart(Cart cart) {
+  private AddToCart(Cart cart) {
     super(cart);
     setEventType(EventType.ADD_TO_CART);
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    return super.equals(o);
+    setCart(new Cart(cart.getId()));
   }
 }

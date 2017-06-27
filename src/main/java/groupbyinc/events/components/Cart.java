@@ -1,30 +1,24 @@
 package groupbyinc.events.components;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cart {
 
-  private List<Item> items;
+  private List<Item> items = new ArrayList<>();
   private String id;
   private List<Metadata> metadata;
-
-  public Cart() {
-  }
 
   public Cart(String id) {
     this.id = id;
   }
 
-  public Cart(List<Item> items, String id) {
-    this.items = items;
-    this.id = id;
-  }
 
   public List<Item> getItems() {
     return items;
   }
 
-  public Cart setItems(List<Item> items) {
+  protected Cart setItems(List<Item> items) {
     this.items = items;
     return this;
   }
@@ -47,23 +41,24 @@ public class Cart {
     return this;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
+  public Cart addItem (Item item){
+    for (Item p : this.items) {
+      if (p.getProduct().equals(item.getProduct())) {
+        p.setQuantity(p.getQuantity() + item.getQuantity());
+        return this;
+      }
     }
-    if (!(o instanceof Cart)) {
-      return false;
-    }
-
-    Cart cart = (Cart) o;
-
-    if (getItems() != null ? !getItems().equals(cart.getItems()) : cart.getItems() != null) {
-      return false;
-    }
-    if (getId() != null ? !getId().equals(cart.getId()) : cart.getId() != null) {
-      return false;
-    }
-    return getMetadata() != null ? getMetadata().equals(cart.getMetadata()) : cart.getMetadata() == null;
+    this.items.add(item);
+    return this;
   }
+
+//  public Cart removeItem (Item item) {
+//    for (Item p : this.items) {
+//      if (p.getProduct().equals(item.getProduct())) {
+//        p.setQuantity(p.getQuantity() - item.getQuantity());
+//        return this;
+//      }
+//    }
+//    return this;
+//  }
 }
